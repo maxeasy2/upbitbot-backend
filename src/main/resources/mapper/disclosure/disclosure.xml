@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mirapps.upbitbot.backend.interfaces.upbit.disclosure.mapper.DisclosureMapper">
+
+    <select id="selectDisclosureCount" resultType="int">
+        select count(*)
+        from disclosure
+        where id = #{id}
+    </select>
+
+    <insert id="insertDisclosure" parameterType="net.mirapps.upbitbot.backend.interfaces.upbit.disclosure.dto.DisclosureDataPostDto">
+        insert into disclosure (
+            id, assets, text, url, start_date, reg_date
+        ) values (
+            #{id}, #{assets}, #{text}, #{url}, #{startDate}, now()
+        )
+    </insert>
+</mapper>
+
