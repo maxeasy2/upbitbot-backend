@@ -35,8 +35,5 @@ spring:
   datasource:
     url: jdbc:mariadb://${database.host}:3306/upbitbot?characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: org.mariadb.jdbc.Driver
-    hikari:
-      username: upbitbot
-      password: 1234
 
 
