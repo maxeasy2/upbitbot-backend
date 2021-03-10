@@ -21,6 +21,8 @@ public class DisclosureController {
 
     private final NotificationService notificationService;
 
+    private static final String disclosureTitle = "[업비트 공시봇 수집]";
+
     @Value("${interfaces.upbit-web.exchange}")
     private String upbitWebExchange;
 
@@ -32,7 +34,7 @@ public class DisclosureController {
             List<DisclosureDataPostDto> posts = disclosureInfo.getData().getPosts();
             if (posts != null && posts.size() > 0) {
                 StringBuilder sb = new StringBuilder();
-                sb.append("[업비트 공시봇 수집]").append("\n");
+                sb.append(disclosureTitle).append("\n");
                 for (DisclosureDataPostDto disclosureDataPostDto : posts) {
                     List<String> marketNameList = disclosureDataPostDto.getMarketNameList();
                     sb.append(disclosureDataPostDto.getAssets());
@@ -51,7 +53,6 @@ public class DisclosureController {
                     }
 
                     sb.append("\n");
-                    //sb.append(disclosureDataPostDto.getUrl()).append("\n\n");
                 }
                 notificationService.send(sb.toString());
                 msgSend = true;

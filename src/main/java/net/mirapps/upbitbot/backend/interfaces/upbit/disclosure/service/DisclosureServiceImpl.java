@@ -26,6 +26,8 @@ public class DisclosureServiceImpl implements DisclosureService {
 
     private final DisclosureMapper disclosureMapper;
 
+    private static final String filterText = "[기공개]";
+
     @Override
     public DisclosureDto getDisclosureInfo() {
         DisclosureDto disclosureDto = projectUpbitFeignClient.getDisclosureInfo(10);
@@ -36,7 +38,7 @@ public class DisclosureServiceImpl implements DisclosureService {
 
         for (DisclosureDataPostDto post : disclosureDataPostDtoList) {
             OffsetDateTime offsetDateTime = OffsetDateTime.parse(post.getStartDate());
-            if (localDateTime.isBefore(offsetDateTime.toLocalDateTime())) {
+            if (localDateTime.isBefore(offsetDateTime.toLocalDateTime()) && !post.getText().startsWith(filterText)) {
                 filterList.add(post);
             }
         }
