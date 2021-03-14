@@ -8,7 +8,7 @@ RUN apk add curl
 RUN apk add vim
 RUN apk add busybox-extras
 
-COPY "target/upbitbot-backend-0.0.1.jar "/webapp/upbitbot-backend.jar"
+COPY "target/upbitbot-backend-0.0.1.jar" "/webapp/upbitbot-backend.jar"
 COPY "startup.sh" "/webapp/startup.sh"
 
 ENTRYPOINT [ "/bin/bash", "/webapp/startup.sh" ]
