@@ -51,6 +51,8 @@ public class DisclosureServiceImpl implements DisclosureService {
             if (disclosureMapper.selectDisclosureCount(post.getId()) == 0) {
                 if (disclosureMapper.insertDisclosure(post) > 0) {
                     insertList.add(post);
+                    List<String> marketList = disclosureMapper.selectMarketList(post.getAssets());
+                    post.setMarketNameList(marketList);
                 }
             }
         }

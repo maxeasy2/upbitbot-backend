@@ -30,7 +30,14 @@ public class DisclosureController {
                 StringBuilder sb = new StringBuilder();
                 sb.append("[업비트 공시봇 수집]").append("\n");
                 for (DisclosureDataPostDto disclosureDataPostDto : posts) {
-                    sb.append(disclosureDataPostDto.getAssets()).append(" : ").append(disclosureDataPostDto.getText()).append("\n\n");
+                    List<String> marketNameList = disclosureDataPostDto.getMarketNameList();
+                    sb.append(disclosureDataPostDto.getAssets());
+                    if (marketNameList != null && marketNameList.size() > 0){
+                        sb.append("(").append(
+                                String.join(",", marketNameList)
+                                .replaceAll("-" + disclosureDataPostDto.getAssets(), "")).append(")");
+                    }
+                    sb.append(" : ").append(disclosureDataPostDto.getText()).append("\n\n");
                     //sb.append(disclosureDataPostDto.getUrl()).append("\n\n");
                 }
                 notificationService.send(sb.toString());

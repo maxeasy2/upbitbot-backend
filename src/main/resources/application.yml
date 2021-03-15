@@ -6,6 +6,8 @@ interfaces:
       url: https://api.telegram.org
     slack:
       url: https://hooks.slack.com/services
+  api-upbit:
+    url: https://api.upbit.com
 spring:
   datasource:
     hikari:
@@ -13,6 +15,8 @@ spring:
       connection-test-query: select 1
 mybatis:
   mapper-locations: mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 feign:
   okhttp:
     enabled: true
@@ -35,5 +39,3 @@ spring:
   datasource:
     url: jdbc:mariadb://${database.host}:3306/upbitbot?characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: org.mariadb.jdbc.Driver
-
-

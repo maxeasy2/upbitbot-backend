@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.mirapps.upbitbot.backend.interfaces.upbit.market.mapper.MarketMapper">
+
+    <select id="selectMarketList" resultType="net.mirapps.upbitbot.backend.interfaces.upbit.market.dto.CoinDto">
+        select
+            market,
+            korean_name,
+            english_name,
+            market_warning,
+            reg_date
+        from market
+    </select>
+
+    <select id="selectMarket" resultType="net.mirapps.upbitbot.backend.interfaces.upbit.market.dto.CoinDto" parameterType="String">
+        select
+            market,
+            korean_name,
+            english_name,
+            market_warning,
+            reg_date
+        from market
+        where market = #{market}
+    </select>
+
+    <delete id="deleteMarketList">
+        delete from market
+    </delete>
+
+    <insert id="insertMarket" parameterType="net.mirapps.upbitbot.backend.interfaces.upbit.market.dto.CoinDto">
+        insert into market (
+            market, korean_name, english_name, market_warning, reg_date
+        ) values (
+             #{market}, #{koreanName}, #{englishName}, #{marketWarning}, now()
+        )
+    </insert>
+</mapper>

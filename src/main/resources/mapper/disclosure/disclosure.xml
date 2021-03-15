@@ -15,5 +15,12 @@
             #{id}, #{assets}, #{text}, #{url}, #{startDate}, now()
         )
     </insert>
+
+    <select id="selectMarketList" resultType="String" parameterType="String">
+        select
+            market
+        from market
+        where market like concat('%', #{assets})
+    </select>
 </mapper>
 
