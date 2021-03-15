@@ -31,7 +31,7 @@ public class DisclosureServiceImpl implements DisclosureService {
         DisclosureDto disclosureDto = projectUpbitFeignClient.getDisclosureInfo(10);
         DisclosureDataDto disclosureDataDto = disclosureDto.getData();
         List<DisclosureDataPostDto> disclosureDataPostDtoList = disclosureDataDto.getPosts();
-        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime localDateTime = LocalDateTime.now().minusDays(1);
         List<DisclosureDataPostDto> filterList = new ArrayList<>();
 
         for (DisclosureDataPostDto post : disclosureDataPostDtoList) {
