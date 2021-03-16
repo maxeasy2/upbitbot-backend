@@ -21,6 +21,8 @@
             market
         from market
         where market like concat('%', #{assets})
+        and market not like 'USDT%'
+        order BY market desc
     </select>
 </mapper>
 

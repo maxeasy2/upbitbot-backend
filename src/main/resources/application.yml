@@ -8,6 +8,9 @@ interfaces:
       url: https://hooks.slack.com/services
   api-upbit:
     url: https://api.upbit.com
+  upbit-web:
+    url: https://upbit.com
+    exchange: ${interfaces.upbit-web.url}/exchange?code=CRIX.UPBIT.
 spring:
   datasource:
     hikari:
